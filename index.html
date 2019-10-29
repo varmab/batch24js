@@ -1,0 +1,292 @@
+<html>
+    <head>
+        <title>Welcome to JS Class</title>
+        <script>
+
+            console.log("Welcome to " +  myName);
+
+            var myName="Varma";
+            var isStudent=false;
+            var age=46;
+
+            //typeof
+
+            age="Fourty Six";
+
+            if(typeof age=="number"){
+                ageAfter10years=age+10;
+            }
+            else
+            {
+                console.error("Invalid age")
+            }
+
+            // My single line comment
+
+            /*
+                This is 
+                multi line
+                comment
+            */
+
+            var x;
+
+            age=null;
+
+            var myNumbers=["one","two","three"];
+            var firstNumber=myNumbers[0];
+            var thirdNumber=myNumbers[2];
+
+
+            var student={
+                name:"Varma",
+                age:46,
+                isStudent:false,
+                "college name":"JNTU",
+                1:"One"
+            }
+
+            var x=10;
+
+
+            var total=add(1,2);
+            console.log(total);
+
+            //function declaration
+            function add(a,b){
+                return a+b;
+                console.log('I am here last')
+            }
+
+            //JavaScript Hoisting
+            
+            //function expression
+            var sum=function(a,b){
+                return a+b;
+            }
+
+            console.log(sum(2,3));
+            
+            //function is first class data type
+
+            //You can return a function
+            function createCounter(a){
+                return function(){
+                    a++;
+                }
+            }
+
+            //You can pass function as an argument
+            //to another function
+
+            function log(s){
+                console.log(s)
+            }
+
+            function logError(e, callback){
+                callback(e);
+            }
+
+            logError("Bad value",log)
+
+            //typeof(log)=="object"
+
+            //Conditional statements
+            var color="red";
+
+            if(color=="red"){
+                console.log("Color is red");
+            }
+            else if(color=="green"){
+                console.log("color is green")
+            }
+            else if(color=="black"){
+                console.log("color is black")
+            }
+            else {
+                console.log("Color is unknown")
+            }
+
+            var a=2;
+
+            if (a){
+
+            }
+            else
+            {
+
+            }
+
+            //ternary - short form of if else
+            (color=="red") ? console.log("red") : console.log("unknown")
+
+            //switch - switch by non boolean string or number
+            switch(color){
+                case "red":
+                    console.log("color is red");
+                    break;
+                case "black":
+                    console.log("color is black");
+                    break;
+                default:
+                    console.log("color is unknown")
+            }
+
+            // Logical AND - &&
+            // Logical OR - ||
+            // Logical NOT- !
+
+            if(color != "red"){
+
+            }
+
+            if(!(color=="red")){
+
+            }
+
+            if((color=="black") || (color=="white")){
+                console.log("It is black & white")
+            }
+            else
+            {
+
+            }
+
+            if((color=="black") && (color=="white")){
+                console.log("It is black & white")
+            }
+            else
+            {
+
+            }
+
+            //Loops
+
+            //while
+            var a=0;
+
+            while(a<=10){
+                console.log(a);
+                a++;
+            }
+
+            //do .. while
+            var b=0;
+
+            do
+            {
+                console.log(b);
+                b++;
+            }
+            while(b<=10)
+
+            //for
+            for(var c=0;c<=10;c++){
+                console.log(c);
+            }
+
+            //break
+            //continue
+
+            //Math
+            //round, floor, ceil, random
+
+            //Arrays
+            var myNumbers=["one", "two", "three"];
+
+            myNumbers.push("four");
+            myNumbers.unshift("zero");
+
+            myNumbers.pop(); //removes last item
+            myNumbers.shift(); //removes from beginning of array
+
+            var myLetters=["a","b","c"];
+            console.log(myLetters.join()) //a,b,c
+            console.log(myLetters.join("")) //abc
+            console.log(myLetters.join("|")) //a|b|c
+
+            myLetters.forEach(function(value,position){
+                console.log(value + " at " + position);
+            })
+
+            var movies=[
+                {
+                    id:1,
+                    title:"Bahubali",
+                    actor:"Prabhas",
+                    revenue:1000,
+                    theaters:["A","B"]
+                },
+                {
+                    id:2,
+                    title:"Adhurs",
+                    actor:"NTR",
+                    revenue:50,
+                    theaters:["B","C"]
+                },
+                {
+                    id:3,
+                    title:"Kushi",
+                    actor:"Pavan",
+                    revenue:15,
+                    theaters:["C","D"]
+                }
+            ]
+
+            //every, some, filter, map, reduce
+
+            //1. is any movie crossed 100cr revenue?
+            var isAny100=movies.some(function(movie){
+                return movie.revenue>=100;
+            })
+
+            console.log(isAny100)
+
+            //2. is All movies crossed 10cr revenue?
+            var isAll100=movies.every(function(movie){
+                return movie.revenue>=10;
+            })
+            console.log(isAll100);
+
+            //3. I want list of movies released in theater B
+            var bMovies=movies.filter(function(movie){
+                return movie.theaters.indexOf("B")!=-1;
+            })
+            
+            console.log(bMovies);
+
+            //4. I want list of titles of all movies as an array
+            // ["Bahubali","Adhurs","Kushi"]
+
+            var titles=movies.map(function(movie){
+                return movie.title;
+            })
+
+            console.log(titles);
+
+            //5. I want total revenue of all movies
+
+            var totalRevenue=movies.reduce(function(total,movie){
+                return total+movie.revenue;
+            },0)
+
+            console.log(totalRevenue);
+
+            //6. I want list of actors in single string 
+            // "Prabhas,NTR,Pavan"
+
+            //7. I want single object containing title as key and actor as
+            // value
+
+            /*
+                
+
+            */
+
+        </script>
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <h1>Welcome to JS Class</h1>
+    </body>
+</html>
