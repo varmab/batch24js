@@ -212,17 +212,17 @@
             var movies=[
                 {
                     id:1,
-                    title:"Bahubali",
-                    actor:"Prabhas",
-                    revenue:1000,
-                    theaters:["A","B"]
-                },
-                {
-                    id:2,
                     title:"Adhurs",
                     actor:"NTR",
                     revenue:50,
                     theaters:["B","C"]
+                },
+                {
+                    id:2,
+                    title:"Bahubali",
+                    actor:"Prabhas",
+                    revenue:1000,
+                    theaters:["A","B"]
                 },
                 {
                     id:3,
@@ -275,18 +275,219 @@
             //6. I want list of actors in single string 
             // "Prabhas,NTR,Pavan"
 
+            var actors=movies.reduce(function(actors,movie){
+                if(actors=="") return movie.actor;
+                return actors + "," + movie.actor;
+            },'');
+            console.log(actors);
+
             //7. I want single object containing title as key and actor as
             // value
 
             /*
-                
-
+                {
+                    "Bahubali":"Prabhas",
+                    "Adhurs":"NTR",
+                    "Kushi":"Pavan"
+                }
             */
 
+            var titleActors=movies.reduce(function(titleActors,movie){
+                titleActors[movie.title]=movie.actor;
+                return titleActors;
+            },{})
+            console.log(titleActors);
+
+            //8. I want list of all theaters of all movies
+            // ["A","B","C","D"]
+
+            var theaters=movies.reduce(function(theaters,movie){
+                movie.theaters.forEach(function(theater){
+                    if(theaters.indexOf(theater)==-1){
+                        theaters.push(theater);
+                    }
+                })
+                return theaters;
+            },[])
+            console.log(theaters);
+
+            movies.sort(function(a,b){
+                if(a.revenue>b.revenue) return 1;
+                if(a.revenue<b.revenue) return -1;
+                return 0;
+            })
+
+            var prabhasMovie=movies.find(function(movie){
+                return movie.actor=="Prabhas";
+            })
+            console.log(prabhasMovie);
         </script>
+        <script>
+            var user={};
+            //var user=new Object();
+
+            user.name="Varma";
+            user["age"]=46;
+            user["college name"]="Coding Sastra";
+
+            var key="degree";
+            user[key]="MTech";
+        </script>
+        <script>
+        
+            var student={
+                name:"Ram",
+                degree:"BTech"
+            }
+        
+            var user={};
+
+            user.name="Varma";
+            user["age"]=46;
+            user["college name"]="JNTU";
+
+            delete user.age;
+
+            var teacher=Object.assign({},user,student);
+
+
+            if(teacher.name){
+
+            }
+
+            var employee={
+                name:"Varma",
+                address:{
+                    street:"MIG 27/1",
+                    city:"Hyderabad"
+                }
+            }
+
+            //Object Oriented Programming
+
+
+            //Class - blueprint or model
+            // properties
+            // methids
+            // constructor
+
+            // //Constructor functions
+            // function Person(name,age){
+            //     this.name=name;
+            //     this.age=age;
+            // }
+
+            // //adding method
+            // Person.prototype.showName=function(){
+            //     console.log(this.name)
+            // }
+
+            class Person{
+                constructor(name,age){
+                    this.name=name;
+                    this.age=age;
+                }
+
+                showName(){
+                    console.log(this.name)
+                }
+            }
+
+            //Creating an object
+            var varma=new Person("Varma",46);
+            varma.showName();
+
+
+            // function Student(name,age, school){
+            //     this.name=name;
+            //     this.age=age;
+            //     this.school=school
+            // }
+
+            // Student.prototype=new Person();
+
+            // Student.prototype.showSchool=function(){
+            //     console.log(this.school)
+            // }
+
+            class Student extends Person{
+                constructor(name,age,school){
+                    super(name,age);
+                    this.school=school;
+                }
+
+                showSchool(){
+                    console.log(this.school)
+                }
+            }
+
+            var ram=new Student("Ram",24,"JNTU");
+            ram.showSchool();
+            ram.showName();
+
+
+            //Object - instance of class
+
+            //Encapsulation
+            //Inheritance
+            //Abstraction
+            //Polymorphism
+
+        </script>
+        
         <script src="index.js"></script>
+        <style>
+            .redTitle {
+                color:brown;
+                font-size: 30;
+            }
+        </style>
     </head>
     <body>
         <h1>Welcome to JS Class</h1>
+        <h1>Hello</h1>
+        <h1>Goodbye</h1>
+        <p>Happy New Year, <b>2020</b></p>
+        <ul>
+            <li id="highlight">List Item 1</li>
+            <li class="bolded">List Item 2</li>
+            <li class="bolded">List Item 3</li>
+        </ul>
+        <a href="http://www.yahoo.com">Yahoo!!!</a>
+        <button>Say Hello</button>
     </body>
 </html>
+<script>
+    var h1=document.querySelector("h1");//SELECT
+    //h1.style.color="red"; //MANIPULATE
+    h1.classList.add("redTitle");
+    //h1.textContent="Thank you for coming"
+
+    var firstLi=document.getElementById("highlight");
+    firstLi.style.color="green";
+
+    var boldedLis=document.getElementsByClassName("bolded");
+    boldedLis[0].style.color="red";
+
+    var p=document.querySelector("p");
+    p.innerHTML="Happy New Year, <b>2021</b>"
+
+    var a=document.querySelector("a");
+    a.setAttribute("href","http://www.google.com");
+    a.textContent="Google"
+
+    var currentLink=a.getAttribute("href");
+
+    var button=document.querySelector("button");
+    button.addEventListener("click",function(){
+        alert("Hello");
+    })
+
+    h1.addEventListener("mouseover",function(){
+        h1.textContent="Thank you for coming"
+    })
+
+    h1.addEventListener("mouseout",function(){
+        h1.textContent="Welcome to JS Class"
+    })
+</script>
