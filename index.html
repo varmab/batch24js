@@ -514,3 +514,94 @@
     })
 
 </script>
+
+<script>
+
+    //let
+    var a=10;
+
+    if(true){
+        let a=20;
+        console.log(a);//? 20
+    }
+
+    console.log(a) //? 10
+
+    //const
+    const PI=3.14;
+
+    // PI=5.41; Not Allowed
+
+    
+    /*  \n */
+
+    var firstName="Varma"
+    var lastName="Bhupatiraju"
+    var address="MIG 27/1, Road #5"
+    var area="KPHB"
+    var city="Hyderabad"
+    var state="TS"
+    var postalCode=500085
+
+    //ES5
+    var shippingLabel=firstName + " " + lastName + "\n"
+                    + address + "\n"
+                    + area + ", " + city + "\n"
+                    + state + " " + postalCode;
+    console.log(shippingLabel);
+
+    //ES6
+    var newShippingLabel=`
+    ${firstName} ${lastName}
+    ${address}
+    ${area}, ${city}
+    ${state} ${postalCode}
+    ${add(1,2)}
+    `
+    console.log(newShippingLabel)
+
+    //Spread operator  or Rest operator  ...
+
+    //Rest operator
+    function add(...numbers){ 
+        return numbers.reduce(function(total,number){
+            return total+number;
+        })
+    }
+
+    var a=[1,2,3];
+    var b=[4,5,6];
+
+    //spread operator
+    var c=[...a,...b]
+
+
+    var family=["Varma","Neelima","Suma","Father","Mother","Father-in-law","Mother-in-law"];
+
+    // var me=family[0];
+    // var wife=family[1];
+    // var daughter=family[2];
+
+    //array destructering
+    var [me,,daughter,...others]=family;
+    console.log(me,daughter);
+    console.log(others);
+
+    var student={
+        name:"varma",
+        age:46
+    }
+
+    //Object destructering
+    var {name,age}=student;
+    console.log(name,age)
+
+
+    var sum=(a,b)=>{
+        return a+b;
+    }
+
+
+    
+
+</script>
