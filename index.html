@@ -20,7 +20,7 @@
             }
             else
             {
-                console.error("Invalid age")
+                //console.error("Invalid age")
             }
 
             // My single line comment
@@ -465,6 +465,8 @@
     </body>
 </html>
 <script>
+    "use Strict";
+
     // var h1=document.querySelector("h1");//SELECT
     // //h1.style.color="red"; //MANIPULATE
     // h1.classList.add("redTitle");
@@ -594,14 +596,120 @@
 
     //Object destructering
     var {name,age}=student;
-    console.log(name,age)
+    //console.log(name,age)
 
 
     var sum=(a,b)=>{
         return a+b;
     }
+</script>
+<script>
+    //"use strict";
+    //Storage
+        //1.Cookies
+        //2. localStorage / sessionStorage
 
+        localStorage.setItem("username","varmab");
+        var loggedinUsername=localStorage.getItem("username");
+        localStorage.removeItem("username");
+        localStorage.clear();
+
+        var cart=[
+            {
+                name:"Pant",
+                qty:2
+            },
+            {
+                name:"Shirt",
+                qty:3
+            }
+        ]
+
+        sessionStorage.setItem("cart",JSON.stringify(cart));
+
+        var currentCart=JSON.parse(sessionStorage.getItem("cart"));
+        //console.log(currentCart);
+
+        sessionStorage.removeItem("cart");
+        sessionStorage.clear();
+    //setTimeout/setInterval
+
+    setTimeout(function(){
+        console.log("This function executes after 5 seconds")
+    },5000);
+
+    var handle=setInterval(function(){
+        console.log("This function called for every one sec")
+    },1000)
+
+    //JSON methods stringify / parse
+    // JSON.strigify
+    // JSON.parse
+
+    clearInterval(handle);
+
+    try {
+        //throw new Error("Something bad happened")
+    }
+    catch(err){
+        //console.error(err);
+    }
+
+    function getProfile(degree,college){
+        return `${this.fullName}, ${this.ageInYears}, ${degree}, ${college}`
+    }
+
+    console.log(getProfile("MTech","JNTU"));
+
+    var varma={
+        fullName:'Varma B',
+        ageInYears:46
+    }
+
+    console.log(getProfile.call(varma,"MTech","IITD"));
+
+    var student={
+        fullName:'Ram',
+        ageInYears:23
+    }
+
+    console.log(getProfile.call(student,"BTech","JNTU"));
+
+    console.log(getProfile.apply(student,["BTech","JNTU"]));
+
+    (function foo(){
+       console.log(this);
+    }.bind(student))();
+
+    var add = function(a){
+        return function(b){
+            return function(c){
+                return a+b+c;
+            }
+        };
+    }
+
+
+    var x={
+        a:1
+    }
+
+    var y=Object.assign({},x);
+
+    var shippingAddress=`
+    ${y}
+    
+    `
+    class A {
+
+    }
+
+    class B extends A {
+
+    }
 
     
+
+
 
 </script>
